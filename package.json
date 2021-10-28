@@ -2,9 +2,9 @@
   "name": "cs347-project2",
   "version": "1.0.0",
   "description": "CS 347 Project 2 - Web Service",
-  "main": "service.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node service.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
