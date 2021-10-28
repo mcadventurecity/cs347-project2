@@ -11,6 +11,11 @@ const service = express();
 
 service.use(express.json());
 
+const port = 5001;
+service.listen(port, () => {
+  console.log(`We're live on port ${port}!`);
+});
+
 connection.connect(error => {
   if (error) {
     console.error(error);
