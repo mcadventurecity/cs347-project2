@@ -172,3 +172,7 @@ service.post('/ytseries', (request, response) => {
       }
     });
   });
+
+  service.get("/report.html", (request, response) => {
+    response.sendFile("report.html");
+  });
