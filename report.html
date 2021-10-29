@@ -22,5 +22,38 @@
             <li>My repository includes schema.sql, and create_mcyt.sql, with passwords redacted.</li>
             <li>I committed my changes after each major change or addition.</li>
         </ol>
+        <h2>Endpoint Docs for Peer Reviews</h2>
+        <ul>
+            <li>https://project2.jarodreichel.me:8443/series Gets the full list of YouTube Series from the database.</li>
+            <li>https://project2.jarodreichel.me:8443/series/:id Gets the YouTube Series with the specified ID from the database.</li>
+            <li>https://project2.jarodreichel.me:8443/ytseries Posts a new Series to the database, with the following parameters as JSON.&nbsp;
+                <ul>
+                    <li>packname: a string containing the Minecraft Modpack Name being played.</li>
+                    <li>youtuber: the YouTuber creating the Series.</li>
+                    <li>episodecount: the number of episodes in the YouTube series.</li>
+                    <li>startdate: the date the YouTube series was first uploaded, formated YYYY-MM-DD.</li>
+                    <li>enddate: the date the YouTube series was last uploaded, formated YYYY-MM-DD.</li>
+                </ul>&nbsp;
+                Example curl command:
+                <pre>
+                    curl --header 'Content-Type: application/json' \
+                        --data '{"packname": "TNP Limitless 2", "youtuber": "MCAdventureCity", "episodecount": 23, "startdate": "2020-09-07", "enddate": "2020-10-23"}' \
+                        https://project2.jarodreichel.me:8443/ytseries
+                </pre>
+            </li>
+            <li>https://project2.jarodreichel.me:8443/ytseries/:id Updates the series with the specified id, using the same JSON parameters as the Post request.&nbsp;
+                Example curl command:
+                <pre>curl --header 'Content-Type: application/json' \
+                    --request PATCH \
+                    --data '{"packname": "TNP Limitless 2", "youtuber": "Not MCAdventureCity", "episodecount": 23, "startdate": "2020-09-07", "enddate": "2020-10-23"}' \
+                    https://project2.jarodreichel.me:8443/ytseries/1</pre>
+            </li>
+            <li>https://project2.jarodreichel.me:8443/ytseries/:id Also can soft-deletes the series with the specified id.&nbsp;
+                Example curl command:
+                <pre>
+                    curl --request DELETE \
+                      https://project2.jarodreichel.me:8443/ytseries/delete/1</pre>
+            </li>
+        </ul>
     </body>
 </html>
