@@ -103,7 +103,7 @@ service.post('/ytseries', (request, response) => {
   service.delete('/ytseries/:id', (request, response) => {
     const parameters = [parseInt(request.params.id)];
   
-    const query = 'DELETE FROM ytseries WHERE id = ?';
+    const query = 'UPDATE ytseries SET is_deleted = 1 WHERE id = ?';
     connection.query(query, parameters, (error, result) => {
       if (error) {
         response.status(404);
