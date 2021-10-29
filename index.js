@@ -74,7 +74,7 @@ service.post('/ytseries', (request, response) => {
     }
   });
 
-  service.patch('/ytseries/:id', (request, response) => {
+  service.patch('/ytseries/update/:id', (request, response) => {
     const parameters = [
       request.body.packname,
       request.body.youtuber,
@@ -85,6 +85,25 @@ service.post('/ytseries', (request, response) => {
     ];
   
     const query = 'UPDATE ytseries SET packname = ?, youtuber = ?, episodecount = ?, startdate = ?, enddate = ? WHERE id = ?';
+    connection.query(query, parameters, (error, result) => {
+      if (error) {
+        response.status(404);
+        response.json({
+          ok: false,
+          results: error.message,
+        });
+      } else {
+        response.json({
+          ok: true,
+        });
+      }
+    });
+  });
+
+  service.delete('/ytseries/delete/:id', (request, response) => {
+    const parameters = [parseInt(request.params.id)];
+  
+    const query = 'UPDATE ytseries SET is_deleted = 1 WHERE id = ?';
     connection.query(query, parameters, (error, result) => {
       if (error) {
         response.status(404);
