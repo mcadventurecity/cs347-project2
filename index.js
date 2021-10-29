@@ -174,5 +174,5 @@ service.post('/ytseries', (request, response) => {
   });
 
   service.get("/report.html", (request, response) => {
-    response.sendFile("report.html");
+    response.sendFile("report.html", {root: __dirname});
   });
