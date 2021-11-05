@@ -45,7 +45,7 @@ function rowToSeries(row) {
     response.sendStatus(200);
   });
 
-service.post('/ytseries', (request, response) => {
+service.post('/ytseries/create', (request, response) => {
     if (request.body.hasOwnProperty('packname') &&
         request.body.hasOwnProperty('youtuber') &&
         request.body.hasOwnProperty('episodecount') &&
@@ -85,7 +85,7 @@ service.post('/ytseries', (request, response) => {
     }
   });
 
-  service.patch('/ytseries/:id', (request, response) => {
+  service.patch('/ytseries/update/:id', (request, response) => {
     const parameters = [
       request.body.packname,
       request.body.youtuber,
@@ -111,7 +111,7 @@ service.post('/ytseries', (request, response) => {
     });
   });
 
-  service.delete('/ytseries/:id', (request, response) => {
+  service.delete('/ytseries/delete/:id', (request, response) => {
     const parameters = [parseInt(request.params.id)];
   
     const query = 'UPDATE ytseries SET is_deleted = 1 WHERE id = ?';
@@ -130,7 +130,7 @@ service.post('/ytseries', (request, response) => {
     });
   });
 
-  service.get('/series/:id', (request, response) => {
+  service.get('/ytseries/get/:id', (request, response) => {
     const parameters = [
       parseInt(request.params.id)
     ];
@@ -153,7 +153,7 @@ service.post('/ytseries', (request, response) => {
     });
   });
 
-  service.get('/series', (request, response) => {
+  service.get('/ytseries/get', (request, response) => {
   
     const query = 'SELECT * FROM ytseries';
     connection.query(query, (error, rows) => {
