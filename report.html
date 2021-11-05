@@ -38,7 +38,7 @@
                 <pre>
                     curl --header 'Content-Type: application/json' \
                         --data '{"packname": "TNP Limitless 2", "youtuber": "MCAdventureCity", "episodecount": 23, "startdate": "2020-09-07", "enddate": "2020-10-23"}' \
-                        https://project2.jarodreichel.me:8443/ytseries
+                        https://project2.jarodreichel.me:8443/ytseries/add
                 </pre>
             </li>
             <li>https://project2.jarodreichel.me:8443/ytseries/update/:id Updates the series with the specified id, using the same JSON parameters as the Post request.&nbsp;
@@ -46,7 +46,7 @@
                 <pre>curl --header 'Content-Type: application/json' \
                     --request PATCH \
                     --data '{"packname": "TNP Limitless 2", "youtuber": "Not MCAdventureCity", "episodecount": 23, "startdate": "2020-09-07", "enddate": "2020-10-23"}' \
-                    https://project2.jarodreichel.me:8443/ytseries/1</pre>
+                    https://project2.jarodreichel.me:8443/ytseries/update/1</pre>
             </li>
             <li>https://project2.jarodreichel.me:8443/ytseries/delete/:id Also can soft-deletes the series with the specified id.&nbsp;
                 Example curl command:

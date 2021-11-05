@@ -111,6 +111,50 @@ service.post('/ytseries/create', (request, response) => {
     });
   });
 
+  service.patch('/ytseries/update/episodes/:id', (request, response) => {
+    const parameters = [
+      request.body.episodecount,
+      parseInt(request.params.id)
+    ];
+  
+    const query = 'UPDATE ytseries SET episodecount = ? WHERE id = ?';
+    connection.query(query, parameters, (error, result) => {
+      if (error) {
+        response.status(404);
+        response.json({
+          ok: false,
+          results: error.message,
+        });
+      } else {
+        response.json({
+          ok: true,
+        });
+      }
+    });
+  });
+
+  service.patch('/ytseries/update/enddate/:id', (request, response) => {
+    const parameters = [
+      request.body.enddate,
+      parseInt(request.params.id)
+    ];
+  
+    const query = 'UPDATE ytseries SET enddate = ? WHERE id = ?';
+    connection.query(query, parameters, (error, result) => {
+      if (error) {
+        response.status(404);
+        response.json({
+          ok: false,
+          results: error.message,
+        });
+      } else {
+        response.json({
+          ok: true,
+        });
+      }
+    });
+  });
+
   service.delete('/ytseries/delete/:id', (request, response) => {
     const parameters = [parseInt(request.params.id)];
   
