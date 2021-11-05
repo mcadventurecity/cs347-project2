@@ -48,6 +48,20 @@
                     --data '{"packname": "TNP Limitless 2", "youtuber": "Not MCAdventureCity", "episodecount": 23, "startdate": "2020-09-07", "enddate": "2020-10-23"}' \
                     https://project2.jarodreichel.me:8443/ytseries/update/1</pre>
             </li>
+            <li>https://project2.jarodreichel.me:8443/ytseries/update/episodes/:id Updates the episode count for the series with the specified id.&nbsp;
+                Example curl command:
+                <pre>curl --header 'Content-Type: application/json' \
+                    --request PATCH \
+                    --data '{"episodecount": 25}' \
+                    https://project2.jarodreichel.me:8443/ytseries/update/episodes/1</pre>
+            </li>
+            <li>https://project2.jarodreichel.me:8443/ytseries/update/enddate/:id Updates the end date for the series with the specified id.&nbsp;
+                Example curl command:
+                <pre>curl --header 'Content-Type: application/json' \
+                    --request PATCH \
+                    --data '{"enddate": "2020-12-31"}' \
+                    https://project2.jarodreichel.me:8443/ytseries/update/episodes/1</pre>
+            </li>
             <li>https://project2.jarodreichel.me:8443/ytseries/delete/:id Also can soft-deletes the series with the specified id.&nbsp;
                 Example curl command:
                 <pre>
