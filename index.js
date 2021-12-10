@@ -179,7 +179,7 @@ service.post('/ytseries/create', (request, response) => {
       parseInt(request.params.id)
     ];
   
-    const query = 'SELECT * FROM ytseries WHERE id = ?';
+    const query = 'SELECT * FROM ytseries WHERE id = ? and is_deleted = 0';
     connection.query(query, parameters, (error, rows) => {
       if (error) {
         response.status(500);
@@ -199,7 +199,7 @@ service.post('/ytseries/create', (request, response) => {
 
   service.get('/ytseries/get', (request, response) => {
   
-    const query = 'SELECT * FROM ytseries';
+    const query = 'SELECT * FROM ytseries WHERE is_deleted = 0';
     connection.query(query, (error, rows) => {
       if (error) {
         response.status(500);
